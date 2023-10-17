@@ -14,7 +14,7 @@
 <meta property="og:description" content="原题链接：https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1079 Binomial Coefficients Your task is to calculate nnn binomial coefficients modulo 109+710^9+7109+7. A binomial coefficient (ab)\binom{a}{b}(ba​) can be calcul">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-12T14:11:53.000Z">
-<meta property="article:modified_time" content="2023-09-25T14:27:43.837Z">
+<meta property="article:modified_time" content="2023-10-09T14:59:54.649Z">
 <meta property="article:author" content="RedGrey">
 <meta property="article:tag" content="Combinatorics">
 <meta property="article:tag" content="Binomial Coefficients">
@@ -112,7 +112,7 @@
   href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
 />
 <p>原题链接：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1079">https://cses.fi/problemset/task/1079</a></p>
-<h2 id="Binomial-Coefficients">Binomial Coefficients</h2>
+<h2 id="Binomial-Coefficients"><strong>Binomial Coefficients</strong></h2>
 <p>Your task is to calculate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> binomial coefficients modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>.<br>
 A binomial coefficient <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>a</mi><mi>b</mi></mfrac><mo fence="true">)</mo></mrow><annotation encoding="application/x-tex">\binom{a}{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span> can be calculated using the formula <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>a</mi><mo stretchy="false">!</mo></mrow><mrow><mi>b</mi><mo stretchy="false">!</mo><mo stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{a!}{b!(a-b)!}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4001em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mclose mtight">!</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">a</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">b</span><span class="mclose mtight">)!</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mclose mtight">!</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.<br>
 We assume that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> are integers and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>b</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0≤b≤a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>.</p>
@@ -193,7 +193,7 @@ We assume that <span class="katex"><span class="katex-mathml"><math xmlns="http:
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binomial-Coefficients/" rel="tag">Binomial Coefficients</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/" rel="tag">Combinatorics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Derangements/" rel="tag">Derangements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/" rel="tag">todo</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binomial-Coefficients/" rel="tag">Binomial Coefficients</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/" rel="tag">Combinatorics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Derangements/" rel="tag">Derangements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/" rel="tag">todo</a></li></ul>
     </div>
   </div>
 
@@ -203,7 +203,7 @@ We assume that <span class="katex"><span class="katex-mathml"><math xmlns="http:
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Binomial-Coefficients/" style="font-size: 10px;">Binomial Coefficients</a> <a href="/tags/Combinatorics/" style="font-size: 20px;">Combinatorics</a> <a href="/tags/Derangements/" style="font-size: 10px;">Derangements</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a>
+      <a href="/tags/Binomial-Coefficients/" style="font-size: 10px;">Binomial Coefficients</a> <a href="/tags/Combinatorics/" style="font-size: 20px;">Combinatorics</a> <a href="/tags/Derangements/" style="font-size: 10px;">Derangements</a> <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a>
     </div>
   </div>
 
@@ -212,7 +212,7 @@ We assume that <span class="katex"><span class="katex-mathml"><math xmlns="http:
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li></ul>
     </div>
   </div>
 
@@ -223,6 +223,10 @@ We assume that <span class="katex"><span class="katex-mathml"><math xmlns="http:
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/10/09/cses-dp-counting-tilings-2181/">cses-dp-counting-tilings-2181</a>
+          </li>
         
           <li>
             <a href="/2023/09/25/hello-world/">Hello World</a>
@@ -238,10 +242,6 @@ We assume that <span class="katex"><span class="katex-mathml"><math xmlns="http:
         
           <li>
             <a href="/2023/09/12/cses-easy-1079/">cses-easy-1079</a>
-          </li>
-        
-          <li>
-            <a href="/2023/09/08/combinatorics/">组合数学介绍</a>
           </li>
         
       </ul>
