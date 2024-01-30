@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>集合的二进制表示法 | RedGrey的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="集合的二进制表示法 概述 有一个包含nnn个不同元素的集合，假设为：{1,2,3,..,n}\{1,2,3,..,n\}{1,2,3,..,n}，他的子集个数有2n2^n2n个，当nnn的大小不是特别大的时候，例如n≤30n\le 30n≤30时（约等于107374182410737418241073741824），我们则可以在合理的时间内枚举出它的所有子集。 子集的表示方法   数组表示法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合的二进制表示法">
+<meta property="og:url" content="http://redgrey93.com/2023/10/25/set-enumerate-by-binary/index.html">
+<meta property="og:site_name" content="RedGrey的博客">
+<meta property="og:description" content="集合的二进制表示法 概述 有一个包含nnn个不同元素的集合，假设为：{1,2,3,..,n}\{1,2,3,..,n\}{1,2,3,..,n}，他的子集个数有2n2^n2n个，当nnn的大小不是特别大的时候，例如n≤30n\le 30n≤30时（约等于107374182410737418241073741824），我们则可以在合理的时间内枚举出它的所有子集。 子集的表示方法   数组表示法">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-25T13:31:30.000Z">
+<meta property="article:modified_time" content="2023-12-11T17:14:48.954Z">
+<meta property="article:author" content="RedGrey">
+<meta property="article:tag" content="Bitmask">
+<meta property="article:tag" content="Binary">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="RedGrey的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">RedGrey的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录想要记录的一切</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://redgrey93.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-set-enumerate-by-binary" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/25/set-enumerate-by-binary/" class="article-date">
+  <time class="dt-published" datetime="2023-10-25T13:31:30.000Z" itemprop="datePublished">2023-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Competitive-Programming/">Competitive Programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      集合的二进制表示法
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+/>
+<h1>集合的二进制表示法</h1>
+<h2 id="概述">概述</h2>
+<p>有一个包含<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>个不同元素的集合，假设为：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{1,2,3,..,n\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">..</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">}</span></span></span></span>，他的子集个数有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>个，当<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>的大小不是特别大的时候，例如<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≤</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">n\le 30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span></span></span></span>时（约等于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1073741824</mn></mrow><annotation encoding="application/x-tex">1073741824</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1073741824</span></span></span></span>），我们则可以在合理的时间内枚举出它的所有子集。</p>
+<h2 id="子集的表示方法">子集的表示方法</h2>
+<ol>
+<li>
+<h4 id="数组表示法">数组表示法</h4>
+</li>
+</ol>
+<ul>
+<li>直接用数组表示集合，这种表示方式比较直接，c++中的任何容器类型都可以用来存储集合</li>
+</ul>
+<ol>
+<li>
+<h4 id="01-bit串表示法（二进制表示法）">01 bit串表示法（二进制表示法）</h4>
+</li>
+</ol>
+<ul>
+<li>使用一个整数的二进制形式来表示集合，二进制数第i个bit位为0，则表示全集中的第i个元素不在子集中，二进制数第i个bit位为1，则表示在子集中；例如一个包含3个元素的集合{1,2,3}的所有子集，可以用&lt;8的整数来表示：
+<ul>
+<li>0 -&gt; 000 -&gt; {}</li>
+<li>1 -&gt; 001 -&gt; {1}</li>
+<li>2 -&gt; 010 -&gt; {2}</li>
+<li>3 -&gt; 011 -&gt; {1,2}</li>
+<li>4 -&gt; 100 -&gt; {3}</li>
+<li>5 -&gt; 101 -&gt; {1,3}</li>
+<li>6 -&gt; 110 -&gt; {2,3}</li>
+<li>7 -&gt; 111 -&gt; {1,2,3}</li>
+</ul>
+</li>
+</ul>
+<h2 id="子集的遍历">子集的遍历</h2>
+<ol>
+<li>
+<h4 id="递归遍历">递归遍历</h4>
+</li>
+</ol>
+<p>使用数组表示法表示集合时，子集遍历使用递归遍历实现起来会比较容易些，二进制表示法当然也可以使用递归遍历，但是二进制表示法有更简洁的遍历方法，没有必要使用递归实现</p>
+<ul>
+<li>设递归函数enumerate(vector<int> s, int idx)，s中存储下标小于idx的元素中选出的子集，初始为空，当遍历到第idx个元素时，有两种选择，一种是选择第idx个元素，加入到s中，一种是不选择idx元素，则s保持不变</li>
+<li>
+<h4 id="代码实现-——-数组表示法">代码实现 —— 数组表示法</h4>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;[&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> val : s)</span><br><span class="line">      cout &lt;&lt; val &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;]&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span> N = <span class="number">4</span>;</span><br><span class="line"><span class="comment">// idx从0开始</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enumerate</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;s, <span class="type">int</span> idx)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (idx == N) &#123;</span><br><span class="line">        <span class="built_in">print</span>(s);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    s.<span class="built_in">emplace_back</span>(idx);</span><br><span class="line">    <span class="built_in">enumerate</span>(s, idx + <span class="number">1</span>);</span><br><span class="line">    s.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="built_in">enumerate</span>(s, idx + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  vector&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">  <span class="built_in">enumerate</span>(s, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>
+<h4 id="迭代遍历">迭代遍历</h4>
+</li>
+</ol>
+<ul>
+<li>
+<h4 id="代码实现-——-数组表示法-2">代码实现 —— 数组表示法</h4>
+</li>
+</ul>
+<p>遍历过程相当于二进制表示法从<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>遍历到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>到过程</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; s)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;[&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> val : s)</span><br><span class="line">      cout &lt;&lt; val &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;]&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span> N = <span class="number">4</span>;</span><br><span class="line"><span class="comment">// idx从0开始</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enumerate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    <span class="type">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 从全集开始遍历</span></span><br><span class="line">    <span class="keyword">while</span>(idx &lt; N) &#123;</span><br><span class="line">        s.<span class="built_in">emplace_back</span>(idx);</span><br><span class="line">        idx++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(s);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(s.<span class="built_in">size</span>() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 集合前缀为s，且包含idx-1的子集已经遍历过了，则将其弹出</span></span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">back</span>() == idx - <span class="number">1</span>) &#123;</span><br><span class="line">            s.<span class="built_in">pop_back</span>();</span><br><span class="line">            <span class="keyword">while</span> (idx &lt; N) &#123; <span class="comment">// idx-1不选，后面全选的情况开始遍历</span></span><br><span class="line">                s.<span class="built_in">emplace_back</span>(idx);</span><br><span class="line">                idx++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">print</span>(s);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 集合前缀为s，且不包含idx-1的集合也遍历过了，该考虑前面的元素了</span></span><br><span class="line">            <span class="keyword">while</span> (s.<span class="built_in">back</span>() != idx - <span class="number">1</span>) &#123;</span><br><span class="line">                idx--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">enumerate</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<h4 id="代码实现-——-二进制表示法">代码实现 —— 二进制表示法</h4>
+</li>
+</ul>
+<p>非常简单，直接遍历所有比<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">2^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>小的整数即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(2^N)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> mask = <span class="number">0</span>; mask &lt; (<span class="number">1</span>&lt;&lt;N); ++mask) &#123;</span><br><span class="line">    <span class="built_in">print</span>(mask);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二进制表示法子集遍历的一些其他技巧">二进制表示法子集遍历的一些其他技巧</h2>
+<ul>
+<li>遍历任意整数mask代表的集合的子集</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(2^(mask的二进制表示中1的个数))</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = mask; j &gt;= <span class="number">0</span>; j = (j - <span class="number">1</span>) &amp; mask) &#123;</span><br><span class="line">    <span class="built_in">print</span>(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(j-1)&amp;mask相当于把j的最低位1置为0，同时把该位右边所有的属于mask集合的位设置为1，所以(j-1)&amp;mask是小于j的mask子集中最大的一个，因此这个遍历能够遍历到所有的mask子集；该实现与<strong>迭代遍历-数组表示法</strong>中的代码思路相同。</p>
+<ul>
+<li>遍历所有元素个数为k的子集</li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/JihuiPeng/p/13666678.html">https://www.cnblogs.com/JihuiPeng/p/13666678.html</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> mask = (<span class="number">1</span> &lt;&lt; k) - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (mask &lt; <span class="number">1</span> &lt;&lt; n) &#123;</span><br><span class="line">	<span class="comment">//进行针对组合的处理 </span></span><br><span class="line">	<span class="type">int</span> x = mask &amp; -mask, y = mask + x;</span><br><span class="line">	mask = ((mask&amp;~y) / x &gt;&gt; <span class="number">1</span>) | y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码拆解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到字典序最小的1的位置，1100 1100 → 0000 0100</span></span><br><span class="line"><span class="type">int</span> x = mask &amp; -mask;</span><br><span class="line"><span class="comment">// 将字典序最小的1的连续区间置为0，并将区间左侧第一个0置为1，1100 1100 → 1101 0000</span></span><br><span class="line"><span class="type">int</span> y = mask + x;</span><br><span class="line"><span class="comment">// 取出字典序最小的1的连续区间，1100 1100 → 0000 1100</span></span><br><span class="line"><span class="type">int</span> z = mask &amp; ~y;</span><br><span class="line"><span class="comment">// 将上一步取出的区间右移，直至区间中1的个数减少一个，0000 1100 → 0000 0001</span></span><br><span class="line"><span class="comment">// &#x27;z/x&#x27;相当于去掉右侧多余的0，&#x27;&gt;&gt;1&#x27;则使剩下的1的个数减少一个</span></span><br><span class="line"><span class="type">int</span> b = (z / x) &gt;&gt; <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 0000 0001 | 1101 0000 → 1101 0001</span></span><br><span class="line">mask = b | y;	  <span class="comment">//取并集</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://redgrey93.com/2023/10/25/set-enumerate-by-binary/" data-id="cls0hvhbj0000t3ys81qlcn97" data-title="集合的二进制表示法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Binary/" rel="tag">Binary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bitmask/" rel="tag">Bitmask</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/11/07/convex-hull-trick/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          convex-hull-trick
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/10/19/atcoder-edu-dp-task-j-sushi/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">atcoder-edu-dp-task-j-sushi</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Competitive-Programming/">Competitive Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Math/">Math</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary/" rel="tag">Binary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binomial-Coefficients/" rel="tag">Binomial Coefficients</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bitmask/" rel="tag">Bitmask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorics/" rel="tag">Combinatorics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Convex-Hull-Trick/" rel="tag">Convex Hull Trick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cyclic-Longest-Common-Subsequence/" rel="tag">Cyclic Longest Common Subsequence</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Derangements/" rel="tag">Derangements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Geometry/" rel="tag">Geometry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Longest-Common-Subsequence/" rel="tag">Longest Common Subsequence</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Number-Theory/" rel="tag">Number Theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/todo/" rel="tag">todo</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Binary/" style="font-size: 10px;">Binary</a> <a href="/tags/Binomial-Coefficients/" style="font-size: 10px;">Binomial Coefficients</a> <a href="/tags/Bitmask/" style="font-size: 16.67px;">Bitmask</a> <a href="/tags/Combinatorics/" style="font-size: 16.67px;">Combinatorics</a> <a href="/tags/Convex-Hull-Trick/" style="font-size: 10px;">Convex Hull Trick</a> <a href="/tags/Cyclic-Longest-Common-Subsequence/" style="font-size: 10px;">Cyclic Longest Common Subsequence</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/Derangements/" style="font-size: 10px;">Derangements</a> <a href="/tags/Dynamic-Programming/" style="font-size: 20px;">Dynamic Programming</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Longest-Common-Subsequence/" style="font-size: 10px;">Longest Common Subsequence</a> <a href="/tags/Number-Theory/" style="font-size: 13.33px;">Number Theory</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/todo/" style="font-size: 10px;">todo</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/29/greatest-common-divisor/">最大公约数，辗转相除法，扩展欧几里得算法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/19/mod-inverse/">模逆元</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/27/IOI07-training/">IOI07_training</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/14/cyclic-longest-common-subsequence/">cyclic-longest-common-subsequence</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/07/convex-hull-trick/">convex-hull-trick</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 RedGrey<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
