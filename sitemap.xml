@@ -2,9 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://redgrey93.com/20240427/codechef-jump/</loc>
+    
+    <lastmod>2024-05-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://redgrey93.com/20240419/kattis-avoidingairports/</loc>
     
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://redgrey93.com/20240430/static-top-tree/</loc>
+    
+    <lastmod>2024-05-07</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -175,7 +193,7 @@
 
   <url>
     <loc>http://redgrey93.com/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -183,126 +201,140 @@
   
   <url>
     <loc>http://redgrey93.com/tags/Hexo/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6-Combinatorics/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0-Binomial-Coefficients/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/Derangements/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-Dynamic-Programming/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E4%BD%8D%E6%8E%A9%E7%A0%81-Bitmask/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E5%87%A0%E4%BD%95-Geometry/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E5%87%B8%E5%8C%85%E6%8A%80%E5%B7%A7-Convex-Hull-Trick/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97-Longest-Common-Subsequence/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E5%BE%AA%E7%8E%AF%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97-Cyclic-Longest-Common-Subsequence/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-DFS/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E6%A0%91-Tree/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E6%95%B0%E8%AE%BA-Number-Theory/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/AIGC/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/OpenSora/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/tags/%E6%96%87%E7%94%9F%E8%A7%86%E9%A2%91/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://redgrey93.com/tags/Static-Top-Tree/</loc>
+    <lastmod>2024-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://redgrey93.com/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91-Segment-Tree/</loc>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -311,28 +343,28 @@
   
   <url>
     <loc>http://redgrey93.com/categories/%E5%A4%87%E5%BF%98/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/categories/%E6%95%B0%E5%AD%A6-Math/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/categories/%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B-Competitive-Programming/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://redgrey93.com/categories/AI/</loc>
-    <lastmod>2024-04-23</lastmod>
+    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
